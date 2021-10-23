@@ -5,7 +5,7 @@
 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet author="andrey" id="createTabels">
-        <createTable tableName="CUSTOMERS">
+        <createTable tableName="CUSTOMER">
             <column name="id" type="bigint(20)" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
@@ -22,36 +22,11 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
                 <constraints nullable="false" />
             </column>
             <column name="customer_id" type="bigint(20)">
-                <constraints nullable="false" foreignKeyName="fk_ext_customer_id" references="CUSTOMERS(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_ext_customer_id" references="CUSTOMER(id)"/>
             </column>
             <column name="product_name" type="varchar(255)"></column>
             <column name="amount" type="int"></column>
         </createTable>
-    </changeSet>
-
-    <changeSet author="andrey" id="fillTables">
-        <insert tableName="CUSTOMERS">
-            <column name="name" value="Ivan"></column>
-            <column name="surname" value="Ivanov"></column>
-            <column name="age" value="25"></column>
-            <column name="phone_number" value="1354746"></column>
-        </insert>
-        <insert tableName="CUSTOMERS">
-            <column name="name" value="Petr"></column>
-            <column name="surname" value="Petrov"></column>
-            <column name="age" value="13"></column>
-            <column name="phone_number" value="654321"></column>
-        </insert>
-        <insert tableName="ORDERS">
-            <column name="customer_id" value="1"></column>
-            <column name="product_name" value="orange"></column>
-            <column name="amount" value="20"></column>
-        </insert>
-        <insert tableName="ORDERS">
-            <column name="customer_id" value="2"></column>
-            <column name="product_name" value="milk"></column>
-            <column name="amount" value="1"></column>
-        </insert>
     </changeSet>
 
 </databaseChangeLog>
